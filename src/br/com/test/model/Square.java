@@ -61,7 +61,7 @@ public class Square {
 	}
 
 	private boolean canPlaceRobot(String[] values) {
-		return getNewX(values) < x && getNewY(values) < y && getNewFace(values) != null; 
+		return getNewX(values) < x && getNewY(values) < y && getNewFace(values) != null;
 	}
 
 	private Integer getNewX(String[] values) {
