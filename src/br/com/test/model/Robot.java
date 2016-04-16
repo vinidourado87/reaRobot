@@ -7,25 +7,25 @@ public class Robot {
 
 	private int x, y;
 	private Face face;
-	
+
 	public Robot(int x, int y, Face face) {
 		this.x = x;
 		this.y = y;
 		this.face = face;
 	}
-	
+
 	public Robot stepForward() {
 		this.y += face.getIncrementalY();
 		this.x += face.getIncrementalX();
 		return this;
 	}
-	
+
 	public Robot stepBack() {
 		this.y -= face.getIncrementalY();
 		this.x -= face.getIncrementalX();
 		return this;
 	}
-	
+
 	public void right() {
 		face = FaceDirection.valueOf(face.name()).getRight();
 	}
@@ -33,7 +33,7 @@ public class Robot {
 	public void left() {
 		face = FaceDirection.valueOf(face.name()).getLeft();
 	}
-	
+
 	public String getReport() {
 		return x + "," + y + "," + face.toString();
 	}

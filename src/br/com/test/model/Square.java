@@ -81,6 +81,6 @@ public class Square {
 	}
 
 	public String getRobotReport() {
-		return robot == null ? null : robot.getReport();
+		return robot == null ? "Robot not placed" : robot.getReport();
 	}
 }
