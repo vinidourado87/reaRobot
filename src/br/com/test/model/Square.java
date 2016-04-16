@@ -1,5 +1,9 @@
 package br.com.test.model;
 
+import static javax.swing.JOptionPane.INFORMATION_MESSAGE;
+
+import javax.swing.JOptionPane;
+
 import br.com.test.enums.Face;
 
 public class Square {
@@ -40,7 +44,7 @@ public class Square {
 			robot.right();
 			break;
 		case "REPORT" :
-			System.out.println(getRobotReport());
+			JOptionPane.showMessageDialog(null, getRobotReport(), "REPORT", INFORMATION_MESSAGE);
 			break;
 		default:
 			break;

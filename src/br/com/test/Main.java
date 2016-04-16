@@ -32,7 +32,6 @@ public class Main {
 				line = bufferedReader.readLine(); 
 			}
 			bufferedReader.close();
-			JOptionPane.showMessageDialog(null, square.getRobotReport(), "SUCCESS", INFORMATION_MESSAGE);
 		} catch (FileNotFoundException e) {
 			JOptionPane.showMessageDialog(null, "FILE NOT FOUND", "ERROR", ERROR_MESSAGE);
 		} catch (IOException e) {
