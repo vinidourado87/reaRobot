@@ -1,7 +1,6 @@
 package br.com.test;
 
 import static javax.swing.JOptionPane.ERROR_MESSAGE;
-import static javax.swing.JOptionPane.INFORMATION_MESSAGE;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
