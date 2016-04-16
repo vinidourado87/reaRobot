@@ -10,8 +10,8 @@ public class SquareTest {
 	@Test
 	public void validateSquareReport() {
 		Square square = new Square(5, 5);
-		assertThat("report method should return nothing before place",
-				square.getRobotReport(), nullValue());
+		assertThat("report method should return error message before place",
+				square.getRobotReport(), equalTo("Robot not placed"));
 	}
 
 	@Test
