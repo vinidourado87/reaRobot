@@ -14,21 +14,21 @@ import br.com.test.model.Square;
 
 public class Main {
 
-	public static void main(String[] args) {		
+	public static void main(String[] args) {
 		try {
 			//Integer x = Integer.parseInt(JOptionPane.showInputDialog("Type the size of X"));
 			//Integer y = Integer.parseInt(JOptionPane.showInputDialog("Type the size of Y"));
 			Square square = new Square(5, 5);
-			
+
 			JFileChooser fileChooser = new JFileChooser();
 			fileChooser.showDialog(null, "Select");
 			FileReader fileReader = new FileReader(fileChooser.getSelectedFile());
 			BufferedReader bufferedReader = new BufferedReader(fileReader);
 			String line = bufferedReader.readLine();
-			
-			while (line != null) { 
+
+			while (line != null) {
 				square.executeCommand(line);
-				line = bufferedReader.readLine(); 
+				line = bufferedReader.readLine();
 			}
 			bufferedReader.close();
 		} catch (FileNotFoundException e) {
