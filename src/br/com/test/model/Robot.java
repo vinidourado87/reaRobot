@@ -14,16 +14,9 @@ public class Robot {
 		this.face = face;
 	}
 
-	public Robot stepForward() {
+	public void move() {
 		this.y += face.getIncrementalY();
 		this.x += face.getIncrementalX();
-		return this;
-	}
-
-	public Robot stepBack() {
-		this.y -= face.getIncrementalY();
-		this.x -= face.getIncrementalX();
-		return this;
 	}
 
 	public void right() {

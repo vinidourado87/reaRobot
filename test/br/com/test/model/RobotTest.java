@@ -20,7 +20,7 @@ public class RobotTest {
 	@Test
 	public void givenRobotThenMoveToNorth() {
 		Robot robot = new Robot(1, 1, Face.NORTH);
-		robot.stepForward();
+		robot.move();
 
 		assertThat("keep the value of x and plus 1 to y",
 				robot.getReport(), equalTo("1,2,NORTH"));
@@ -47,7 +47,7 @@ public class RobotTest {
 	@Test
 	public void givenRobotThenMoveToSouth() {
 		Robot robot = new Robot(1, 1, Face.SOUTH);
-		robot.stepForward();
+		robot.move();
 
 		assertThat("keep the value of x and subs 1 from y",
 				robot.getReport(), equalTo("1,0,SOUTH"));
@@ -56,7 +56,7 @@ public class RobotTest {
 	@Test
 	public void givenRobotThenMoveToEast() {
 		Robot robot = new Robot(1, 1, Face.EAST);
-		robot.stepForward();
+		robot.move();
 
 		assertThat("plus 1 to x and keep the value of y",
 				robot.getReport(), equalTo("2,1,EAST"));
@@ -65,31 +65,9 @@ public class RobotTest {
 	@Test
 	public void givenRobotThenMoveToWest() {
 		Robot robot = new Robot(1, 1, Face.WEST);
-		robot.stepForward();
+		robot.move();
 
 		assertThat("subs 1 to x and keep the value of y",
 				robot.getReport(), equalTo("0,1,WEST"));
-	}
-
-	@Test
-	public void givenRobotThenMoveToNorthThenStepBack() {
-		Robot robot = new Robot(1, 1, Face.NORTH);
-		robot.stepForward();
-		assertThat("plus 1 to y", robot.getY(), equalTo(2));
-		assertThat("keep the value of x", robot.getX(), equalTo(1));
-		robot.stepBack();
-		assertThat("subs 1 from y", robot.getY(), equalTo(1));
-		assertThat("keep the value of x", robot.getX(), equalTo(1));
-	}
-
-	@Test
-	public void givenRobotThenMoveToEastThenStepBack() {
-		Robot robot = new Robot(1, 1, Face.EAST);
-		robot.stepForward();
-		assertThat("keep the value of y", robot.getY(), equalTo(1));
-		assertThat("plus 1 to x", robot.getX(), equalTo(2));
-		robot.stepBack();
-		assertThat("keep the value of y", robot.getY(), equalTo(1));
-		assertThat("subs 1 from x", robot.getX(), equalTo(1));
 	}
 }

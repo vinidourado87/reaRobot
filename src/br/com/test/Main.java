@@ -10,7 +10,7 @@ import java.io.IOException;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
-import br.com.test.model.Square;
+import br.com.test.model.Table;
 
 public class Main {
 
@@ -18,7 +18,7 @@ public class Main {
 		try {
 			//Integer x = Integer.parseInt(JOptionPane.showInputDialog("Type the size of X"));
 			//Integer y = Integer.parseInt(JOptionPane.showInputDialog("Type the size of Y"));
-			Square square = new Square(5, 5);
+			Table table = new Table(5, 5);
 
 			JFileChooser fileChooser = new JFileChooser();
 			fileChooser.showDialog(null, "Select");
@@ -27,7 +27,7 @@ public class Main {
 			String line = bufferedReader.readLine();
 
 			while (line != null) {
-				square.executeCommand(line);
+				table.executeCommand(line);
 				line = bufferedReader.readLine();
 			}
 			bufferedReader.close();

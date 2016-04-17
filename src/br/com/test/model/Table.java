@@ -6,12 +6,12 @@ import javax.swing.JOptionPane;
 
 import br.com.test.enums.Face;
 
-public class Square {
+public class Table {
 
 	private int x, y;
 	private Robot robot;
 
-	public Square(int x, int y) {
+	public Table(int x, int y) {
 		this.x = x;
 		this.y = y;
 	}
@@ -20,24 +20,22 @@ public class Square {
 		return robot == null ? "Robot not placed" : robot.getReport();
 	}
 
-	public Square executeCommand(String command) {
+	public Table executeCommand(String command) {
 		command = command.trim();
 		if (command.startsWith("PLACE")) {
 			placeRobot(command);
 		} else if(robot != null) {
-			executeMovement(command);
+			commandOnPlacedRobot(command);
 		}
 		return this;
 	}
 
 	private void placeRobot(String command) {
 		String[] values = extractValues(command);
-		if (canPlaceRobot(values)) {
-			robot = new Robot(getNewXOf(values), getNewYOf(values), getNewFaceOf(values));
-		}
+		if (canPlaceRobot(values)) robot = new Robot(getNewXOf(values), getNewYOf(values), getNewFaceOf(values));
 	}
 
-	private void executeMovement(String command) {
+	private void commandOnPlacedRobot(String command) {
 		switch (command) {
 		case "MOVE" :
 			moveRobot();
@@ -57,12 +55,12 @@ public class Square {
 	}
 
 	private void moveRobot() {
-		robot.stepForward();
-		if ( robotIsGoingToFall() ) robot.stepBack();
+		if ( !robotIsGoingToFall() ) robot.move();
 	}
 
 	private boolean robotIsGoingToFall() {
-		return robot.getX() >= this.x || robot.getY() >= this.y;
+		return robot.getX() + robot.getFace().getIncrementalX() >= this.x || 
+				robot.getY() + robot.getFace().getIncrementalY() >= this.y;
 	}
 
 	private boolean canPlaceRobot(String[] values) {
