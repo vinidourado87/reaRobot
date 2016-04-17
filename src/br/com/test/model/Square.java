@@ -16,11 +16,16 @@ public class Square {
 		this.y = y;
 	}
 
+	public String getRobotReport() {
+		return robot == null ? "Robot not placed" : robot.getReport();
+	}
+
 	public Square executeCommand(String command) {
+		command = command.trim();
 		if (command.startsWith("PLACE")) {
 			placeRobot(command);
 		} else if(robot != null) {
-			execute(command);
+			executeMovement(command);
 		}
 		return this;
 	}
@@ -28,11 +33,11 @@ public class Square {
 	private void placeRobot(String command) {
 		String[] values = extractValues(command);
 		if (canPlaceRobot(values)) {
-			robot = new Robot(getNewX(values), getNewY(values), getNewFace(values));
+			robot = new Robot(getNewXOf(values), getNewYOf(values), getNewFaceOf(values));
 		}
 	}
 
-	private void execute(String command) {
+	private void executeMovement(String command) {
 		switch (command) {
 		case "MOVE" :
 			moveRobot();
@@ -61,26 +66,24 @@ public class Square {
 	}
 
 	private boolean canPlaceRobot(String[] values) {
-		return getNewX(values) < x && getNewY(values) < y && getNewFace(values) != null;
+		return values != null && (getNewXOf(values) < x && getNewYOf(values) < y && getNewFaceOf(values) != null);
 	}
 
-	private Integer getNewX(String[] values) {
+	private Integer getNewXOf(String[] values) {
 		return Integer.valueOf(values[0]);
 	}
 
-	private Integer getNewY(String[] values) {
+	private Integer getNewYOf(String[] values) {
 		return Integer.valueOf(values[1]);
 	}
 
-	private Face getNewFace(String[] values) {
+	private Face getNewFaceOf(String[] values) {
 		return Face.valueOf(values[2]);
 	}
 
 	private String[] extractValues(String command) {
-		return command.split(" ")[1].split(",");
+		String[] splitCommand = command.split(" ");
+		return splitCommand.length == 2 ? splitCommand[1].split(",") : null;
 	}
 
-	public String getRobotReport() {
-		return robot == null ? "Robot not placed" : robot.getReport();
-	}
 }
